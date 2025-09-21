@@ -1,7 +1,8 @@
 # BookManagement with NGRX simple without http calls
 
-https://www.youtube.com/watch?v=TqBt4Kkdor0
-https://github.com/SyncfusionExamples/angular-state-management-with-ngrx/blob/main/src/app/app.component.ts
+![ngrx](img/1.png)
+![ngrx](img/2.png)
+![ngrx](img/3.png)
 
 
 
