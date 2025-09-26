@@ -1,0 +1,73 @@
+[
+  {
+    "id": 101,
+    "category": "Electronics"
+  },
+  {
+    "id": 102,
+    "category": "Computers & Laptops",
+    "parent_category_id": 101
+  },
+  {
+    "id": 103,
+    "category": "Smartphones",
+    "parent_category_id": 101
+  },
+  {
+    "id": 104,
+    "category": "Accessories",
+    "parent_category_id": 101
+  },
+  {
+    "id": 105,
+    "category": "Keyboards",
+    "parent_category_id": 104
+  },
+  {
+    "id": 201,
+    "category": "Home & Kitchen"
+  },
+  {
+    "id": 202,
+    "category": "Kitchen Appliances",
+    "parent_category_id": 201
+  },
+  {
+    "id": 203,
+    "category": "Cookware",
+    "parent_category_id": 201
+  },
+  {
+    "id": 301,
+    "category": "Fashion"
+  },
+  {
+    "id": 302,
+    "category": "Men's Clothing",
+    "parent_category_id": 301
+  },
+  {
+    "id": 303,
+    "category": "Women's Clothing",
+    "parent_category_id": 301
+  },
+  {
+    "id": 304,
+    "category": "Shoes",
+    "parent_category_id": 301
+  },
+  {
+    "id": 401,
+    "category": "Books"
+  },
+  {
+    "id": 402,
+    "category": "Fiction",
+    "parent_category_id": 401
+  },
+  {
+    "id": 403,
+    "category": "Non-Fiction",
+    "parent_category_id": 401
+  }
+]

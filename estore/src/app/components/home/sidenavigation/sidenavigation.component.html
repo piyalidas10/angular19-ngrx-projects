@@ -1,0 +1,41 @@
+<div
+  class="mt-6 p-5 shadow-lg h-full rounded-2xl bg-gray-50 border border-gray-200"
+>
+  <!--Section Title-->
+  <div class="pb-3 border-b">
+    <h3 class="text-xl font-bold text-center text-gray-700 tracking-wide">
+      Categories
+    </h3>
+  </div>
+
+  <!--Accordion-->
+  <div class="mt-4 space-y-3">
+    @for (mainCategory of getCategories(); track mainCategory.id) {
+    <details class="group rounded-t-xl bg-white border border-gray-200">
+      <summary
+        class="cursor-pointer list-none px-5 py-3 bg-blue-100 font-semibold text-gray-600 hover:bg-blue-50 flex justify-between items-center transition rounded-t-xl"
+      >
+        <span class="text-gray-700">{{ mainCategory.category }}</span>
+        <fa-icon
+          [icon]="faAngleDown"
+          class="transform transition-transform group-open:rotate-180 text-gray-400"
+        ></fa-icon>
+      </summary>
+      <div class="px-5 py-4">
+        <ul class="space-y-3">
+          @for (subCategory of getCategories(mainCategory.id); track
+          subCategory.id) {
+          <li class="text-center">
+            <a
+              (click)="onSubCategoryClick(subCategory)"
+              class="link-hover cursor-pointer"
+              >{{ subCategory.category }}</a
+            >
+          </li>
+          }
+        </ul>
+      </div>
+    </details>
+    }
+  </div>
+</div>

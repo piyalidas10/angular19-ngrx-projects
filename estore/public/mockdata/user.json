@@ -1,0 +1,102 @@
+[
+  {
+    "firstName": "Sneha",
+    "lastName": "Patel",
+    "address": "184 Patel Street",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "pin": "411001",
+    "email": "sneha.patel0@example.com",
+    "password": "Sneha@245"
+  },
+  {
+    "firstName": "Pooja",
+    "lastName": "Singh",
+    "address": "72 Singh Street",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "pin": "500033",
+    "email": "pooja.singh1@example.com",
+    "password": "Pooja@497"
+  },
+  {
+    "firstName": "John",
+    "lastName": "Nair",
+    "address": "143 Nair Street",
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "pin": "380001",
+    "email": "john.nair2@example.com",
+    "password": "John@870"
+  },
+  {
+    "firstName": "Sneha",
+    "lastName": "Singh",
+    "address": "87 Singh Street",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "pin": "110001",
+    "email": "sneha.singh3@example.com",
+    "password": "Sneha@457"
+  },
+  {
+    "firstName": "Arjun",
+    "lastName": "Kapoor",
+    "address": "191 Kapoor Street",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "pin": "600001",
+    "email": "arjun.kapoor4@example.com",
+    "password": "Arjun@729"
+  },
+  {
+    "firstName": "Ravi",
+    "lastName": "Verma",
+    "address": "37 Verma Street",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "pin": "400001",
+    "email": "ravi.verma5@example.com",
+    "password": "Ravi@312"
+  },
+  {
+    "firstName": "Priya",
+    "lastName": "Gupta",
+    "address": "53 Gupta Street",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "pin": "700001",
+    "email": "priya.gupta6@example.com",
+    "password": "Priya@984"
+  },
+  {
+    "firstName": "Raj",
+    "lastName": "Iyer",
+    "address": "168 Iyer Street",
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "pin": "302001",
+    "email": "raj.iyer7@example.com",
+    "password": "Raj@552"
+  },
+  {
+    "firstName": "Karan",
+    "lastName": "Sharma",
+    "address": "109 Sharma Street",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "pin": "560001",
+    "email": "karan.sharma8@example.com",
+    "password": "Karan@198"
+  },
+  {
+    "firstName": "Meera",
+    "lastName": "Patel",
+    "address": "45 Patel Street",
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "pin": "380001",
+    "email": "meera.patel9@example.com",
+    "password": "Meera@734"
+  }
+]

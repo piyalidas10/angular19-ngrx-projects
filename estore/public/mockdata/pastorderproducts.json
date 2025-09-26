@@ -1,0 +1,58 @@
+[
+  {
+    "productId": 101,
+    "productImage": "https://images.unsplash.com/photo-1546410531-d3752e257c74",
+    "qty": 1,
+    "price": 120.50,
+    "amount": 120.50,
+    "productName": "Ergonomic Mechanical Keyboard"
+  },
+  {
+    "productId": 102,
+    "productImage": "https://images.unsplash.com/photo-1505740420928-5e56e0766029",
+    "qty": 2,
+    "price": 89.99,
+    "amount": 179.98,
+    "productName": "Bluetooth Noise-Cancelling Headphones"
+  },
+  {
+    "productId": 103,
+    "productImage": "https://images.unsplash.com/photo-1563729784409-77a8344e269e",
+    "qty": 1,
+    "price": 349.99,
+    "amount": 349.99,
+    "productName": "4K Ultra HD Monitor"
+  },
+  {
+    "productId": 104,
+    "productImage": "https://images.unsplash.com/photo-1584283838407-743604f33b1e",
+    "qty": 1,
+    "price": 75.00,
+    "amount": 75.00,
+    "productName": "Premium Leather Laptop Bag"
+  },
+  {
+    "productId": 105,
+    "productImage": "https://images.unsplash.com/photo-1610488661644-8d9600e12d1b",
+    "qty": 3,
+    "price": 35.00,
+    "amount": 105.00,
+    "productName": "Stainless Steel Smart Water Bottle"
+  },
+  {
+    "productId": 106,
+    "productImage": "https://images.unsplash.com/photo-1555546252-9b0d77d73016",
+    "qty": 1,
+    "price": 450.00,
+    "amount": 450.00,
+    "productName": "Automatic Espresso Machine"
+  },
+  {
+    "productId": 107,
+    "productImage": "https://images.unsplash.com/photo-1551000624-91f86f780829",
+    "qty": 2,
+    "price": 150.00,
+    "amount": 300.00,
+    "productName": "Fitness Tracker Smartwatch"
+  }
+]

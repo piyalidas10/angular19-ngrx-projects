@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "product_name": "Ergonomic Mechanical Keyboard",
+    "product_img": "https://images.unsplash.com/photo-1546410531-d3752e257c74",
+    "price": 120.50,
+    "ratings": 4.5,
+    "product_description": "A high-quality mechanical keyboard with ergonomic design and customizable backlighting.",
+    "category_id": 101
+  },
+  {
+    "id": 2,
+    "product_name": "Bluetooth Noise-Cancelling Headphones",
+    "product_img": "https://images.unsplash.com/photo-1505740420928-5e56e0766029",
+    "price": 89.99,
+    "ratings": 4.8,
+    "product_description": "Experience superior sound quality with these wireless headphones featuring active noise cancellation.",
+    "category_id": 101
+  },
+  {
+    "id": 3,
+    "product_name": "4K Ultra HD Monitor",
+    "product_img": "https://images.unsplash.com/photo-1563729784409-77a8344e269e",
+    "price": 349.99,
+    "ratings": 4.7,
+    "product_description": "A 27-inch 4K monitor with vibrant colors and a wide viewing angle for an immersive experience.",
+    "category_id": 101
+  },
+  {
+    "id": 4,
+    "product_name": "Premium Leather Laptop Bag",
+    "product_img": "https://images.unsplash.com/photo-1584283838407-743604f33b1e",
+    "price": 75.00,
+    "ratings": 4.6,
+    "product_description": "A stylish and durable leather bag designed to protect your laptop and essentials.",
+    "category_id": 102
+  },
+  {
+    "id": 5,
+    "product_name": "Stainless Steel Smart Water Bottle",
+    "product_img": "https://images.unsplash.com/photo-1610488661644-8d9600e12d1b",
+    "price": 35.00,
+    "ratings": 4.3,
+    "product_description": "Keep track of your hydration with this insulated smart water bottle that connects to your phone.",
+    "category_id": 103
+  },
+  {
+    "id": 6,
+    "product_name": "Automatic Espresso Machine",
+    "product_img": "https://images.unsplash.com/photo-1555546252-9b0d77d73016",
+    "price": 450.00,
+    "ratings": 4.9,
+    "product_description": "Brew café-quality espresso at home with this fully automatic machine.",
+    "category_id": 103
+  },
+  {
+    "id": 7,
+    "product_name": "Fitness Tracker Smartwatch",
+    "product_img": "https://images.unsplash.com/photo-1551000624-91f86f780829",
+    "price": 150.00,
+    "ratings": 4.2,
+    "product_description": "Monitor your heart rate, steps, and sleep patterns with this sleek and modern smartwatch.",
+    "category_id": 104
+  },
+  {
+    "id": 8,
+    "product_name": "Portable Bluetooth Speaker",
+    "product_img": "https://images.unsplash.com/photo-1577708703770-4f3640b33671",
+    "price": 55.00,
+    "ratings": 4.4,
+    "product_description": "Take your music anywhere with this compact and powerful wireless speaker.",
+    "category_id": 101
+  },
+  {
+    "id": 9,
+    "product_name": "Chef's Knife Set (5-Piece)",
+    "product_img": "https://images.unsplash.com/photo-1614723049187-54b9f323c6d7",
+    "price": 99.99,
+    "ratings": 4.9,
+    "product_description": "A professional-grade knife set for all your kitchen needs, made from high-carbon stainless steel.",
+    "category_id": 103
+  },
+  {
+    "id": 10,
+    "product_name": "Waterproof Backpack",
+    "product_img": "https://images.unsplash.com/photo-1555409545-a74c424a528f",
+    "price": 45.00,
+    "ratings": 4.1,
+    "product_description": "Perfect for adventures, this backpack is made with waterproof material to protect your gear.",
+    "category_id": 102
+  }
+]

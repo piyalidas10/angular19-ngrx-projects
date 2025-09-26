@@ -1,0 +1,96 @@
+<div
+  class="fixed top-0 left-0 z-50 w-full min-h-[5rem] shadow-[2px_2px_20px_gray] bg-gray-900 flex flex-wrap md:flex-nowrap items-center px-4 gap-y-2"
+>
+  <div class="text-white px-3 md:w-[23%] w-full flex items-center">
+    <h1 class="text-3xl font-bold cursor-pointer">
+      <a routerLink="/home/products" class="cursor-pointer">eStore</a>
+    </h1>
+  </div>
+
+  <div class="w-full md:w-[50%] flex items-center justify-center h-[2.5rem]">
+    @if(displaySearch()){
+    <div
+      class="w-full bg-white flex items-center rounded-md overflow-hidden h-full"
+    >
+      <select
+        #categoryOptions
+        class="bg-gray-300 h-full border-none font-semibold px-2 pr-5"
+      >
+        @for (category of categoryStore.topLevelCategories(); track $index) {
+        <option [value]="category.id">{{ category.category }}</option>
+        }
+      </select>
+      <input
+        #keyword
+        class="w-full h-full border-none outline-none px-3"
+        placeholder="Search..."
+      />
+      <button
+        (click)="onClickSearch(keyword.value, categoryOptions.value)"
+        class="w-[10%] min-w-[2.5rem] h-full border-none bg-gray-300 flex justify-center items-center cursor-pointer"
+      >
+        <fa-icon [icon]="faSearch" class="cursor-pointer"></fa-icon>
+      </button>
+    </div>
+    }
+  </div>
+
+  <div
+    class="w-full md:w-[27%] flex items-center justify-between md:justify-end gap-4 text-white text-lg"
+  >
+    @if (!isUserAuthenticated()) {
+    <div class="flex items-center gap-2">
+      <fa-icon [icon]="faUserCircle" class="text-[1.3em]"></fa-icon>
+      <a
+        routerLink="/home/login"
+        class="px-1 py-1 rounded transition-all duration-300 hover:bg-white hover:text-gray-900"
+        >Sign in / Join</a
+      >
+    </div>
+    } @if (isUserAuthenticated()) {
+    <div class="relative inline-block text-left">
+      <button
+        (click)="toggleDropdown()"
+        class="inline-flex items-center gap-2 px-4 py-2 bg-gray-700 text-white font-medium rounded-md hover:bg-gray-800 transition text-base cursor-pointer"
+      >
+        <fa-icon [icon]="faUserCircle" class="text-[1.3rem]"></fa-icon>
+        Hi {{ userName() }}
+        <fa-icon [icon]="faChevronDown"></fa-icon>
+      </button>
+
+      @if (dropdownVisible()) {
+      <div
+        class="absolute right-0 mt-2 w-35 bg-white rounded-md shadow-md border border-gray-200 z-50"
+      >
+        <ul class="py-1 text-sm text-gray-700">
+          <li class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">
+            <a (click)="pastOrders()">Past Order</a>
+          </li>
+          <li class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">
+            <a href="#" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+      }
+    </div>
+    }
+
+    <div class="relative flex items-center">
+      <button
+        type="button"
+        class="flex items-center justify-center text-white p-2 rounded-full bg-gray-700 hover:bg-gray-800 transition-colors cursor-pointer"
+        (click)="navigateToCart()"
+      >
+        <fa-icon [icon]="faShoppingCart" class="text-[1.3em]"></fa-icon>
+      </button>
+
+      @if (cart.cart()) { @if (cart.totalProducts() > 0) {
+      <span
+        class="absolute -top-1 -right-2 flex items-center justify-center text-[0.7rem] font-semibold text-white bg-amber-500 rounded-full w-5 h-5"
+      >
+        {{ cart.totalProducts() }}
+      </span>
+      } }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<app-header (searchClicked)="onSearchKeyword($event)"></app-header>
+<div class="pt-[5rem]">
+  <app-catnavigation
+    (categoryClicked)="onSelectCategory($event)"
+  ></app-catnavigation>
+</div>
+
+<router-outlet></router-outlet>
