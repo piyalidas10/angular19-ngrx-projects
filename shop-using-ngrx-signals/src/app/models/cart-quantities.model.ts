@@ -1,0 +1,1 @@
+export type CartQuantities = Record<string, number>;

@@ -1,0 +1,67 @@
+@use '@angular/material' as mat;
+@use "sass:map";
+@use "vars";
+
+@mixin go($primary, $accent, $is-light: true) {
+  $theme: _create_theme_map($primary, $accent, $is-light);
+
+  @if (&==null) {
+    @include mat.all-component-themes($theme);
+    :root {
+      @include _create_vars($theme);
+    }
+  }
+  @else {
+    @include mat.all-component-colors($theme);
+    @include _create_vars($theme);
+  }
+}
+
+@function _create_theme_map($primary, $accent, $is-light: true) {
+  $plt-primary: mat.m2-define-palette($primary);
+  $plt-accent: mat.m2-define-palette($accent);
+  $plt-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+  @if $is-light {
+    @return mat.m2-define-light-theme((color: (primary: $plt-primary,
+          accent: $plt-accent,
+          warn: $plt-warn,
+        )));
+  }
+
+  @else {
+    @return mat.m2-define-dark-theme((color: (primary: $plt-primary,
+          accent: $plt-accent,
+          warn: $plt-warn,
+        )));
+  }
+}
+
+@mixin _create_vars($theme) {
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+
+  $primary-contrast: map.get($primary, contrast);
+  $accent-contrast: map.get($accent, contrast);
+  $warn-contrast: map.get($warn, contrast);
+
+  $foreground: map.get($theme, foreground);
+  $background: map.get($theme, background);
+
+  $keys: (50: 50, 100: 100, 200:200, 300:300, 400:400, 500:500, 600:600, 700:700, 800:800, 900:900);
+  $accent-keys: (A100: 100, A200: 200, A400: 400, A700: 700);
+
+  @include vars.go("p", $primary, $keys);
+  @include vars.go("pc", $primary-contrast, $keys);
+
+  @include vars.go("a", $accent, $accent-keys);
+  @include vars.go("ac", $accent-contrast, $accent-keys);
+
+  @include vars.go("w", $warn, $keys);
+  @include vars.go("wc", $warn-contrast, $keys);
+
+  @include vars.go("b", $background);
+  @include vars.go("f", $foreground);
+}
+

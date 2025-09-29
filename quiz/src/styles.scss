@@ -1,0 +1,34 @@
+@use 'core';
+@use 'palettes' as pal;
+@use 'theme';
+@use 'typography';
+@use "@angular/material" as mat;
+@use 'snackbar';
+
+@include core.go();
+@include theme.go(pal.$primary, pal.$accent, true);
+@include typography.typography();
+@include snackbar.go();
+
+.blue-theme {
+    @include theme.go(mat.$m2-blue-palette, pal.$accent, true);
+}
+
+.green-theme {
+    @include theme.go(mat.$m2-green-palette, pal.$accent, true);
+
+}
+
+
+p.firebase-emulator-warning {
+    display: none;
+}
+
+.mat-mdc-menu-panel.the-menu {
+    .mat-mdc-menu-content {
+        background-color: var(--p-500);
+        border: 1px solid var(--p-800);
+        display: flex;
+        flex-direction: column;
+    }
+}

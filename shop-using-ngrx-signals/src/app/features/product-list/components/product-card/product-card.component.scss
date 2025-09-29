@@ -1,0 +1,63 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    flex-basis: auto;
+    flex-shrink: 0;
+  }
+
+  .details {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .name {
+      font: var(--mat-sys-title-large);
+      font-weight: 500;
+    }
+
+    .description {
+      font: var(--mat-sys-body-medium);
+    }
+  }
+
+  .aux {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    .price {
+      font: var(--mat-sys-title-large);
+    }
+
+    app-quantity {
+      color: var(--t);
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  :host {
+    img {
+      width: 90px;
+      height: 90px;
+    }  
+  }
+}
+
+@media screen and (max-width: 400px) {
+  :host {
+    img {
+      display: none;
+    }  
+  }
+}

@@ -1,1 +1,0 @@
-.container { padding: 16px; } .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; } .card { padding:12px; border:1px solid #ccc; border-radius:8px; } .pager { margin-top:12px; }

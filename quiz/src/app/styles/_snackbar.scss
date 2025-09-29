@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+@mixin go() {
+    .success-snackbar {
+        @include mat.snack-bar-overrides((
+            container-color: var(--a-400),
+            supporting-text-color: white, 
+            button-color: white
+        ));
+    }
+
+    .error-snackbar {
+        @include mat.snack-bar-overrides((
+            container-color: var(--w-700),
+            supporting-text-color: white,
+            button-color: white
+        ));
+    }
+
+}

@@ -1,0 +1,30 @@
+@let vm = store.vm();
+
+<h1>Your Cart ({{ vm.itemsCount }} items)</h1>
+<div class="items">
+  @for (item of vm.items; track item.id) {
+  <app-cart-item [item]="item" />
+  <hr />
+  }
+</div>
+<div class="subtotal">
+  <div class="label">Subtotal:</div>
+  <div class="value">{{ vm.subtotal | currency }}</div>
+</div>
+<div class="tax">
+  <div class="label">Tax:</div>
+  <div class="value">{{ vm.tax | currency }}</div>
+</div>
+<div class="total">
+  <div class="label">Total:</div>
+  <div class="value">{{ vm.total | currency }}</div>
+</div>
+<div class="actions">
+  <button
+    mat-flat-button
+    [disabled]="!vm.canCheckout"
+    (click)="store.checkoutCart()"
+  >
+    Checkout
+  </button>
+</div>

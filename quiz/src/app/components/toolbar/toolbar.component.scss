@@ -1,0 +1,36 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    background-color: var(--p-100);
+    padding: 20px;
+    font-size: 28px;
+    border-bottom: 1px solid var(--p-600);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3);
+    color: var(--p-500);
+    font-weight: bold;
+
+    .brand {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        
+        mat-icon {
+            width: auto;
+            height: auto;
+            font-size: 40px;
+            color: var(--p-400);
+            margin-inline-end: 10px;
+        }    
+    }
+
+
+    .actions {
+        margin-inline-start: auto;
+        display: flex;
+        flex-direction: row;
+    }
+
+}

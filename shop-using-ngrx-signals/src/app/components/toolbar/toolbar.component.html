@@ -1,0 +1,17 @@
+@let vm = store.vm();
+
+<mat-icon class="logo">sensors</mat-icon>
+<span>The Signals Shop</span>
+<input type="search" 
+    placeholder="search" 
+    [ngModel]="store.searchWord()"
+    (ngModelChange)="store.setSearchWord($event)"
+    />
+<button mat-icon-button class="cart-button"
+    [matBadge]="vm.cartItemsCount"
+    [matBadgeHidden]="!vm.isCartActive"
+    [disabled]="!vm.isCartActive"
+    (click)="store.viewCart()"
+    >
+    <mat-icon class="cart">shopping_cart</mat-icon>
+</button>

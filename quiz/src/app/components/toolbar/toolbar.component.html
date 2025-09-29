@@ -1,0 +1,9 @@
+<div class="brand" routerLink="/home">
+    @if (icon()) {
+        <mat-icon>{{icon()}}</mat-icon>
+    }
+    {{caption()}}    
+</div>
+<div class="actions">
+    <ng-content/>
+</div>

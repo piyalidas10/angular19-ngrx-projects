@@ -1,0 +1,65 @@
+@use "@angular/material" as mat;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    align-items: center;
+    line-height: 1;
+
+    .color-item {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      border: 1px solid black;
+      margin-inline-end: 4px;
+      border-radius: 0.5em;
+      vertical-align: middle;
+    }
+  }
+
+  .answers {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .answer {
+      display: flex;
+      flex-direction: row;
+      max-width: 400px;
+      cursor: pointer;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+
+
+      border-radius: 8px 0px 0px 8px;
+
+      .thumbnail {
+        width: 30px;
+        border-inline-end: 1px solid var(--f-divider);
+      }
+
+      .caption {
+        border: 1px solid var(--f-divider);
+        border-inline-start-width: 0px;
+        padding: 8px;
+        font-size: 16px;
+        color: var(--f-secondary-text);
+        flex-grow: 1;
+      }
+
+      &:hover {
+        background-color: var(--b-hover);
+      }
+
+    }
+  }
+
+
+
+}

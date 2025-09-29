@@ -1,0 +1,9 @@
+@let vm = store.vm();
+
+<h1>{{vm.productItems.length}} Results</h1>
+<div class="results">
+    @for(product of vm.productItems; track product.id) {
+        <app-product-card [product]="product"/>
+        @if (!$last) {<div class="divider"></div>}
+    }    
+</div>

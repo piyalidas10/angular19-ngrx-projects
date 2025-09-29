@@ -1,0 +1,19 @@
+<div class="image">
+  <img [src]="image()" />
+</div>
+
+<div class="details">
+  <div class="name">{{ item().name }}</div>
+  <div class="price">
+    {{ item().price | currency }}
+  </div>
+</div>
+
+<app-quantity [amount]="item().quantity"
+  (increment)="store.incrementQuantity(item().id)"
+  (decrement)="store.decrementQuantity(item().id)"
+/>
+
+<div class="total">
+  {{ item().total | currency }}
+</div>

@@ -1,0 +1,25 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+
+    h1 {
+        font: var(--mat-sys-headline-large);
+    }
+
+    .results {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        max-width: 1000px;
+
+        .divider {
+            border-top: 1px solid var(--n-outline-2);
+            height: 1px;
+        }
+
+    }
+}
+
+

@@ -1,0 +1,21 @@
+@use 'icons';
+
+:host {
+    @include icons.symbol();
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    span {
+        font-weight: semibold;
+    }
+
+    mat-icon {
+        color: var(--p);
+
+        &.filled {
+            font-variation-settings: 'FILL' 1;
+
+        }
+    }
+}

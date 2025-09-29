@@ -1,0 +1,54 @@
+@use "@angular/material" as mat;
+
+@mixin go() {
+  @include mat.elevation-classes();
+  @include mat.app-background();
+
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    background: var(--b-background);
+    color: var(--f-text);
+  }
+
+  body {
+    display: grid;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    box-sizing: border-box;
+  }
+
+  mat-icon.material-symbols-outlined {
+    font-weight: 200;
+  }
+
+  mat-icon.mat-icon {
+    width: auto;
+    height: auto;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+    background-color: var(--p-200);
+    background-color: rgb(from var(--p-500) r g b / 30%);
+
+    &:hover {
+      background-color: var(--p-500);
+    }
+  }
+}

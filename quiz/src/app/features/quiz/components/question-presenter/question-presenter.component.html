@@ -1,0 +1,16 @@
+<h1>
+  {{store.title()}} @for (record of store.captionColors(); track $index)
+  { @if($index > 0) { @if ($last) { and } @else { , } }
+
+  {{ record.name }}
+  <span class="color-item" [style.background]="record.key"></span>
+  } ?
+</h1>
+<div class="answers">
+  @for(record of store.answerColors(); track $index) {
+  <div class="answer" (click)="store.addAnswer($index)">
+    <div class="thumbnail" [style.background]="record.key"></div>
+    <div class="caption">{{ record.name }}</div>
+  </div>
+  }
+</div>

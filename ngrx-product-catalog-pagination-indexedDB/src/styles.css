@@ -1,0 +1,27 @@
+/* Global styles */
+body { font-family: Arial, sans-serif; margin:0; padding:0; }
+table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse; /* Prevents double borders */
+    }
+    th, td {
+      padding: 8px; /* Adds space inside cells */
+    }
+    th {
+      text-align: left; /* Aligns header text to the left */
+    }
+    td {
+      text-align: center; /* Centers data text */
+    }
+    th {
+      background-color: #f2f2f2; /* Light gray background for headers */
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd; /* Alternating row colors */
+    }
+    tr:hover {
+      background-color: #ffff99; /* Highlights row on hover */
+    }
+    table {
+      width: 100%; /* Makes the table span the full width of its container */
+    }

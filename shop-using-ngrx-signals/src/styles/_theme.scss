@@ -1,0 +1,29 @@
+@use "@angular/material" as mat;
+@use "vars";
+
+@mixin go($primary, $tertiary) {
+  $theme: (
+    color: (
+      theme-type: light,
+      primary: $primary,
+      tertiary: $tertiary,
+    ),
+    typography: Roboto,
+    density: 0,
+  );
+  @include mat.theme($theme);
+  @include vars.go($theme);
+
+  [tertiary] {
+    $theme: (
+      color: (
+        theme-type: light,
+        primary: $tertiary,
+        tertiary: $tertiary,
+      ),
+      typography: Roboto,
+      density: 0,
+    );
+    @include mat.theme($theme);
+  }
+}

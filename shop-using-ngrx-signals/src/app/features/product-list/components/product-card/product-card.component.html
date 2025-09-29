@@ -1,0 +1,25 @@
+<img [src]="image()"/>
+<div class="details">
+    <div class="name">
+        {{product().name}}
+    </div>
+    <div class="description">
+        {{product().description}}
+    </div>
+    <app-ranking [value]="product().ranking"/>
+</div>
+<div class="aux">
+    <div class="price">
+        {{product().unitPrice | currency}}
+    </div>
+    @if(isInCart()) {
+        <button mat-flat-button (click)="store.viewCart()">
+            View Cart
+        </button>    
+    } @else {
+        <button mat-flat-button tertiary 
+        (click)="store.addToCart(product().id)" >
+            Add To Cart
+        </button>    
+    }
+</div>

@@ -1,0 +1,27 @@
+@use '@angular/material' as mat;
+
+@mixin go() {
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+        display: flex;
+        flex-direction: column;
+        background: var(--n-backgroud);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* fixes */
+    mat-icon.mat-icon {
+        width: auto;
+        height: auto;
+    }
+}

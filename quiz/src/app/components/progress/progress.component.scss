@@ -1,0 +1,28 @@
+:host {
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    .bar {
+        border: 1px solid gray;
+        height: 24px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        background-color: var(--b-status-bar);
+        .fill {
+            background-color: var(--p-300);
+            border-radius: 12px;
+            transition: 1s;
+        }
+    }
+
+    .value {
+        width: 6em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: var(--p-500);
+    }
+}

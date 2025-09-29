@@ -1,0 +1,49 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-height: 100%;
+
+  img {
+    height: 130px;
+    opacity: 0.65;
+    object-fit: cover;
+    margin-bottom: 5px;
+  }
+
+  app-product-list {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0px;
+    overflow-y: auto;
+  }
+
+  .cart {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 55px 5px;
+
+    .overlay {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    app-cart {
+
+    }
+  }
+}

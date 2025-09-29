@@ -1,0 +1,24 @@
+@use "sass:map";
+
+@mixin go($prefix, $palette, $keys: null) {
+    @if (&==null) {
+        :root {
+          @include _create_vars($prefix, $palette, $keys);
+        }
+      }
+      @else {
+        @include _create_vars($prefix, $palette, $keys);
+      }
+}
+
+@mixin _create_vars($prefix, $palette, $keys: null) {
+  @if $keys == null {
+    @each $key, $value in $palette {
+      --#{$prefix}-#{$key}: #{$value};
+    }
+  } @else {
+    @each $key, $value in $keys {
+      --#{$prefix}-#{$value}: #{map.get($palette, $key)};
+    }
+  }
+}

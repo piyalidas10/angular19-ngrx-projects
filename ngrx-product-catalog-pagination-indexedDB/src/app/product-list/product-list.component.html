@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>Product Catalog (NgRx + IndexedDB)</h1>
+
+  @if (total$ | async) {
+  <div>Total Products : {{total$ | async}}</div>
+  }
+
+  <table>
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Price (₹)</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of (products$ | async); track p.id) {
+      <tr>
+        <td>{{p.name}}</td>
+        <td>{{p.price | currency}}</td>
+        <td>{{p.description}}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  @if (total$ | async; as total) {
+  @if (!total || total === 0) {
+  <div>No products found.</div>
+  } @else {
+  <div class="pagination" style="margin-top:12px;">
+    <button (click)="prevPage()" [disabled]="page <= 1">Prev</button>
+    Page {{ page }}
+    <button (click)="nextPage()" [disabled]="(page * pageSize) >= total">Next</button>
+  </div>
+  }
+  }
+
+</div>

@@ -1,0 +1,79 @@
+@use 'sass:map' as map;
+@use 'sass:meta' as meta;
+
+@mixin go($theme) {
+    $color: map.get($theme, 'color');
+    $primary: map.get($color, 'primary');
+    $tertiary: map.get($color, 'tertiary');
+
+    $secondary: map.get($primary, 'secondary');
+    $neutral: map.get($primary, 'neutral');
+    $neutral-variant: map.get($primary, 'variant');
+    $error: map.get($primary, 'error');
+
+    @include list($primary, 'p');
+    --p: var(--mat-sys-primary);
+    --p-fixed: var(--mat-sys-primary-fixed);
+    --p-dim: var(--mat-sys-primary-fixed-dim);
+    --p-on: var(--mat-sys-on-primary);
+    --p-on-fixed: var(--mat-sys-on-primary-container);
+    --p-on-fixed-2: var(--mat-sys-on-primary-fixed-variant);
+
+    @include list($secondary, 's');
+    --s: var(--mat-sys-secondary);
+    --s-fixed: var(--mat-sys-secondary-fixed);
+    --s-dim: var(--mat-sys-secondary-fixed-dim);
+    --s-on: var(--mat-sys-on-secondary);
+    --s-on-fixed: var(--mat-sys-on-secondary-container);
+    --s-on-fixed-2: var(--mat-sys-on-secondary-fixed-variant);
+
+    @include list($tertiary, 't');
+    --t: var(--mat-sys-tertiary);
+    --t-fixed: var(--mat-sys-tertiary-fixed);
+    --t-dim: var(--mat-sys-tertiary-fixed-dim);
+    --t-on: var(--mat-sys-on-tertiary);
+    --t-on-fixed: var(--mat-sys-on-tertiary-container);
+    --t-on-fixed-2: var(--mat-sys-on-tertiary-fixed-variant);
+
+
+    @include list($error, 'e');
+    --e: var(--mat-sys-error);
+    --e-fixed: var(--mat-sys-error-container);
+    --e-on: var(--mat-sys-on-error);
+    --e-on-fixed: var(--mat-sys-on-error-container);
+
+    --n-backgroud: var(--mat-sys-background);
+    --n-on-backgroud: var(--mat-sys-on-background);
+    --n-outline: var(--mat-sys-outline);
+    --n-outline-2: var(--mat-sys-outline-variant);
+    --n-surface: var(--mat-sys-surface);
+    --n-on-surface: var(--mat-sys-on-surface);
+    --n-shadow: var(--mat-sys-shadow);
+
+    @include list($neutral, 'n');
+    @include list($neutral-variant, 'nv');
+
+    --shadow-0: var(--mat-sys-level0);
+    --shadow-1: var(--mat-sys-level1);
+    --shadow-2: var(--mat-sys-level2);
+    --shadow-3: var(--mat-sys-level3);
+    --shadow-4: var(--mat-sys-level4);
+    --shadow-5: var(--mat-sys-level5);
+
+
+
+
+
+
+
+
+}
+
+
+@mixin list($swatch, $prefix) {
+    @each $key, $value in $swatch {
+        @if meta.type-of($key) == 'number' {
+            --#{$prefix}-#{$key}: #{$value};
+        }
+    }
+}
