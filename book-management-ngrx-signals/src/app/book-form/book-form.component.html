@@ -1,0 +1,9 @@
+@if (successMessage()) {
+        <p class="success">{{ successMessage() }}</p>
+      }
+<form (ngSubmit)="addBook(bookForm)" #bookForm="ngForm" class="form">
+      <input type="date" [(ngModel)]="checkInDate" name="checkInDate" required />
+      <input type="text" [(ngModel)]="title" name="title" placeholder="Book Title" required />
+      <input type="text" [(ngModel)]="author" name="author" placeholder="Author" required />
+      <button type="submit">Add Book</button>
+    </form>

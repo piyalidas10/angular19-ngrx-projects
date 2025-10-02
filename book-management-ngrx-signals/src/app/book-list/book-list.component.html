@@ -1,0 +1,24 @@
+<h1>Books</h1>
+<!-- 
+👉 Using ?? [] makes sure Angular always gets an array, even if books$ hasn’t emitted yet. 
+the Angular compiler is warning you because (books$ | async) may resolve to null or undefined before your observable emits the first value.
+-->
+<p *ngIf="(books()?.length ?? 0) === 0">No books available.</p>
+<table class="table table-striped" *ngIf="(books()?.length ?? 0) > 0">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Check In Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books()">
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.checkInDate }}</td>
+            <td><button class="btn btn-danger" (click)="remove(book.id)">Remove Book</button></td>
+        </tr>
+    </tbody>
+</table>
