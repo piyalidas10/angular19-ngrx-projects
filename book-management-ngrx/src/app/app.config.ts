@@ -1,7 +1,5 @@
 import { ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { routes } from './app.routes';
-import { provideRouter } from '@angular/router';
 import { provideStore } from '@ngrx/store';
 import { BookReducer } from './books/book.reducer';
 import { provideEffects } from '@ngrx/effects';
@@ -11,11 +9,10 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideStore({ book: BookReducer }),
     provideEffects([BookEffects]),
-    provideStoreDevtools({
+    provideStoreDevtools({ // 🛠 Devtools (only enable in dev mode)
           maxAge: 25, // Retains last 25 states
           logOnly: !isDevMode(), // Restrict extension to log-only mode in production
           autoPause: true, // Pauses recording actions and state changes when the extension window is not open

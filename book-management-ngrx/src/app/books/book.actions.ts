@@ -6,4 +6,4 @@ export const AddBookSuccess = createAction('[Book] Add Book Successfully', props
 export const AddBookFailure = createAction('[Book] Add Book Failure', props<{error:any}>());
 
 
-export const RemoveBook = createAction('[Book] Remove Book', props<{bookId: string}>());
+export const RemoveBook = createAction('[Book] Remove Book', props<{bookId: number}>());

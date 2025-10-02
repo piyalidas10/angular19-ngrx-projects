@@ -1,0 +1,10 @@
+@if (successMessage()) {
+        <p class="success">{{ successMessage() }}</p>
+      }
+
+    <form  class="form" [formGroup]="addbookForm" (ngSubmit)="addBook()">
+        <input type="date" placeholder="Check In Date" formControlName="checkInDate">
+        <input type="text" placeholder="Book Title" formControlName="bookTitle">
+        <input type="text" placeholder="Author" class="form-control" formControlName="bookAuthor">
+        <button class="btn btn-primary" type="submit" [disabled]="addbookForm.invalid">Add Book</button>
+    </form>

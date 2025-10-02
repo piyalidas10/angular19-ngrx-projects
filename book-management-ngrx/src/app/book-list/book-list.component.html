@@ -1,33 +1,38 @@
 <h1>Books</h1>
-<div *ngFor="let book of books$ | async">
-    <h2>{{book.title}}</h2>
-    <h3>{{book.author}}</h3>
-    <button (click)="removeBook(book.id)">Remove Book</button>
-</div>
+<!-- 
+👉 @if (books$ | async; as books) unwraps the observable safely.
+If it’s null, the outer @else will show Loading....
+-->
+@if (books$ | async; as books) {
+  @if (books.length > 0) {
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Check In Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (book of books; track book.id) {
+          <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.checkInDate }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="removeBook(book.id)">
+                Remove Book
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <p>No books available. Please add some books.</p>
+  }
+} @else {
+  <p>Loading books...</p>
+}
 
-
-<h2>Create a new book</h2>
-
-<div>
-    <form [formGroup]="addbookForm" (ngSubmit)="addBook()">
-        <div class="row mb-3">
-            <div class="col">
-                <label class="form-label">Check-In Date:</label>
-                <input type="text" placeholder="Book Id" class="form-control" formControlName="bookId">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-                <label class="form-label">Book Title:</label>
-                <input type="text" placeholder="Book Title" class="form-control" formControlName="bookTitle">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-                <label class="form-label">Author:</label>
-                <input type="text" placeholder="Author" class="form-control" formControlName="bookAuthor">
-            </div>
-        </div>
-        <button class="btn btn-primary" type="submit" [disabled]="addbookForm.invalid">Add Book</button>
-    </form>
-</div>
