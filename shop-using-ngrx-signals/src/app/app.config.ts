@@ -11,7 +11,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideAnimationsAsync(), 
     provideAppInitializer(() => {
-      inject(MatIconRegistry).setDefaultFontSetClass('material-symbols-outlined')
+      inject(MatIconRegistry).setDefaultFontSetClass('material-symbols-outlined') // Use the outlined style for Material Symbols
     })
   
   ]

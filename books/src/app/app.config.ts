@@ -6,5 +6,5 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
-    provideRouter(routes, withComponentInputBinding())]
+    provideRouter(routes, withComponentInputBinding())]// // enables binding route params/query params to component @Input()
 };

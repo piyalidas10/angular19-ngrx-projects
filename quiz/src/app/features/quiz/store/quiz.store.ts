@@ -6,12 +6,9 @@ import { getCorrectCount } from "./quiz.helpers";
 import { translate, translateToPairs } from "../../../store/app.helpers";
 import { QUESTION_CAPTION } from "../../../data/dictionaries";
 import { AppStore } from "../../../store/app.store";
-import { rxMethod } from "@ngrx/signals/rxjs-interop";
 import { ColorQuizGeneratorService } from "../../../services/color-quiz-generator.service";
-import { exhaustAll, map, tap } from "rxjs";
 import { withDevtools } from "@angular-architects/ngrx-toolkit";
 import { withLocalStorage } from "../../../custom-features/with-local-storage.feature";
-import { setBusy, setIdle } from "../../../custom-features/with-busy/with-busy.updaters";
 import { withBusy } from "../../../custom-features/with-busy/with-busy.feature";
 import { withService } from "../../../custom-features/with-service/with-service.feature";
 
