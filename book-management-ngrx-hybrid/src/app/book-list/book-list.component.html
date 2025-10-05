@@ -1,0 +1,49 @@
+<!-- 
+👉 @if (books$ | async; as books) unwraps the observable safely.
+If it’s null, the outer @else will show Loading....
+-->
+@if (books$ | async | bookFilter: uiStore.filter() : uiStore.sortBy(); as books) {
+@if (books.length > 0) {
+<div class="flex gap-2 justify-end mb-4 mt-10">
+  <input type="text" #sortInput placeholder="Filter by title..." [value]="uiStore.filter()"
+    (input)="uiStore.setFilter(sortInput.value)"
+    class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+  <select #sortSelect [value]="uiStore.sortBy()" (change)="onSortChange(sortSelect.value)">
+    <option value="title">Sort by Title</option>
+    <option value="date">Sort by Date</option>
+  </select>
+</div>
+
+<table class="min-w-full border border-gray-200">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="px-4 py-2 text-left font-semibold text-gray-700">Title</th>
+      <th class="px-4 py-2 text-left font-semibold text-gray-700">Author</th>
+      <th class="px-4 py-2 text-left font-semibold text-gray-700">Check In Date</th>
+      <th class="px-4 py-2 text-center font-semibold text-gray-700">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="divide-y divide-gray-200">
+    @for (book of books; track book.id) {
+    <tr>
+      <td class="px-4 py-2">{{ book.title }}</td>
+      <td class="px-4 py-2">{{ book.author }}</td>
+      <td class="px-4 py-2">{{ book.checkInDate }}</td>
+      <td class="px-4 py-2 text-center">
+        <button (click)="updateBook(book.id)" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+          Edit
+        </button>
+        <button (click)="removeBook(book.id)" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
+          Remove
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+} @else {
+<p>No books available. Please add some books.</p>
+}
+} @else {
+<p>Loading books...</p>
+}
