@@ -14,15 +14,9 @@ export class BookFacade {
         this.store.dispatch(LoadBooks());
     }
 
-    add(book: Book) {
-        this.store.dispatch(AddBook({
-            book: {
-                id: book.id,
-                title: book.title,
-                author: book.author,
-                checkInDate: book.checkInDate
-            }
-        }));
+    add(book: Omit<Book, 'id'>) {
+        const newBook: Book = { ...book, id: Date.now() };
+        this.store.dispatch(AddBook({ book: newBook }));
     }
 
     remove(bookId: number){

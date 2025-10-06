@@ -28,7 +28,6 @@ export class BookFormComponent {
   addBook() {
     if (this.addbookForm.valid) {
       this.bookFacade.add({
-        id: Date.now(),
         title: this.addbookForm.value['bookTitle'],
         author: this.addbookForm.value['bookAuthor'],
         checkInDate: this.addbookForm.value['checkInDate']
