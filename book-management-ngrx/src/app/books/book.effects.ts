@@ -14,10 +14,10 @@ export class BookEffects {
     
         // For each 'AddBook' action, call 'addBook' on the book service.
         // 'mergeMap' allows multiple concurrent 'addBook' calls.
-        mergeMap((action) => this.bookService.addBook(action)
+        mergeMap((action) => this.bookService.addBook(action.book)
         .pipe(
             // If the 'addBook' call is successful, dispatch 'AddBookSuccess' action with the book data.
-            map(book => bookActions.AddBookSuccess(book)),
+            map(book => bookActions.AddBookSuccess({ book })),
     
             // If the 'addBook' call fails, dispatch 'AddBookFailure' action with the error.
             catchError((error) => of(bookActions.AddBookFailure({ error })))

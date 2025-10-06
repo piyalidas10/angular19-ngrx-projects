@@ -10,7 +10,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideClientHydration(withEventReplay()),
-    provideStore({ book: BookReducer }),
+    provideStore({ books: BookReducer }),
     provideEffects([BookEffects]),
     provideStoreDevtools({ // 🛠 Devtools (only enable in dev mode)
           maxAge: 25, // Retains last 25 states

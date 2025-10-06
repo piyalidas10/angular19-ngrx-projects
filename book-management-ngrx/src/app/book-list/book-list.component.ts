@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import {Observable} from 'rxjs';
-import { Book } from '../models/book';
-import { RemoveBook } from '../books/book.actions';
 import { AppState } from '../app.state';
 import { CommonModule } from '@angular/common';
+import { selectBooks } from '../books/book.selector';
+import { BookFacade } from '../books/book.facade';
 
 
 @Component({
@@ -14,15 +13,16 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule]
 })
-export class BookListComponent{  
-  books$: Observable<Book[]>;
+export class BookListComponent implements OnInit{
+  bookFacade = inject(BookFacade);
+  books$ = this.bookFacade.books$;
   
-  constructor(private store: Store<AppState>) {
-    this.books$ = this.store.pipe(select('book'));
+  ngOnInit(): void {
+    this.bookFacade.load();
   }
 
   removeBook(bookId: number){
-    this.store.dispatch(RemoveBook({bookId}));
+    this.bookFacade.remove(bookId);
   }
 
 }

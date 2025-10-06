@@ -1,8 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { AppState } from '../app.state';
-import { AddBook } from '../books/book.actions';
+import { BookFacade } from '../books/book.facade';
 
 @Component({
   selector: 'app-book-form',
@@ -14,8 +12,9 @@ import { AddBook } from '../books/book.actions';
 export class BookFormComponent {
   addbookForm: FormGroup = new FormGroup({});
   successMessage = signal<string | null>(null);
+  bookFacade = inject(BookFacade);
 
-  constructor(private store: Store<AppState>, private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -28,13 +27,14 @@ export class BookFormComponent {
 
   addBook() {
     if (this.addbookForm.valid) {
-      this.store.dispatch(AddBook({
+      this.bookFacade.add({
         id: Date.now(),
         title: this.addbookForm.value['bookTitle'],
         author: this.addbookForm.value['bookAuthor'],
         checkInDate: this.addbookForm.value['checkInDate']
-      }));
+      });
     }
+    this.addbookForm.reset();
     // Show success message
     this.successMessage.set(`'${this.addbookForm.value['bookTitle']}' checked in successfully!`);
     setTimeout(() => this.successMessage.set(null), 3000);
