@@ -2,7 +2,7 @@
         <p class="success">{{ successMessage() }}</p>
       }
 
-    <form class="grid grid-cols-4 gap-1" [formGroup]="addbookForm" (ngSubmit)="addBook()">
+    <form class="grid grid-cols-4 gap-1" [formGroup]="bookForm" (ngSubmit)="onSubmitBook()">
       <div>
          <input type="date" placeholder="Check In Date" formControlName="checkInDate" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
@@ -12,5 +12,8 @@
       <div>  
         <input type="text" placeholder="Author" class="form-control" formControlName="bookAuthor" class=" w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>  
-        <button class="bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700" type="submit" [disabled]="addbookForm.invalid">Add Book</button>
+        <button class="bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700" type="submit" [disabled]="bookForm.invalid">
+          {{ facade.isEditing() ? 'Update' : 'Add' }} Book
+        </button>
+        <button type="button" class="bg-grey-600 text-white py-2 px-4 rounded hover:bg-grey-700" (click)="onCancel()">Cancel</button>
     </form>

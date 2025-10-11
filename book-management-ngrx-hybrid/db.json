@@ -1,22 +1,16 @@
 {
   "books": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Angular Signals",
       "author": "Mark Thompson",
       "checkInDate": "2025-10-01"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "NgRx in Action",
       "author": "Mike Ryan",
       "checkInDate": "2025-09-15"
-    },
-    {
-      "id": 1759673867222,
-      "title": "Java",
-      "author": "Piyali Das",
-      "checkInDate": "2025-10-05"
     }
   ]
 }

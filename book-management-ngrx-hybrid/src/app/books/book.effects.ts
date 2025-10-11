@@ -9,7 +9,7 @@ import { addBook, loadBooks, loadBooksSuccess, removeBook, updateBook } from './
 export class BookEffects {
   private api = 'http://localhost:3000/books';
 
-  constructor(private actions$: Actions, private http: HttpClient) {}
+  constructor(private actions$: Actions, private http: HttpClient) { }
 
   loadBooks$ = createEffect(() =>
     this.actions$.pipe(
@@ -30,15 +30,15 @@ export class BookEffects {
   );
 
   updateBook$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType(updateBook),
-    mergeMap(({ book }) =>
-      this.http.put<Book>(`${this.api}/${book.id}`, book).pipe(
-        map(() => loadBooks()) // reload after update
+    this.actions$.pipe(
+      ofType(updateBook),
+      mergeMap(({ book }) =>
+        this.http.put<Book>(`${this.api}/${book.id}`, book).pipe(
+          map(() => loadBooks()) // reload after update
+        )
       )
     )
-  )
-);
+  );
 
 
   removeBook$ = createEffect(() =>

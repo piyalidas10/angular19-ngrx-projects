@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookFormComponent } from './book-form/book-form.component';
 import { BookUIStore } from './books/book-ui.store';
+import { BookFacade } from './books/book.facade';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,5 @@ import { BookUIStore } from './books/book-ui.store';
 })
 export class AppComponent {
   title = 'book-management';
-  uiStore = inject(BookUIStore);
+  facade = inject(BookFacade);
 }

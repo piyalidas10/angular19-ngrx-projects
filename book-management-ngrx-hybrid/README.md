@@ -1,5 +1,37 @@
 # 📚 BookManagement with Hybrid (NGRX Store + NGRX Signal Store)
 
+***Install Dependencies**
+1️⃣ Install Dependencies
+```
+npm install @ngrx/effects json-server
+```
+
+2️⃣ Mock API (db.json at project root)
+```
+{
+  "books": [
+    { "id": 1, "title": "Angular Signals", "author": "Mark Thompson", "checkInDate": "2025-10-01" },
+    { "id": 2, "title": "NgRx in Action", "author": "Mike Ryan", "checkInDate": "2025-09-15" }
+  ]
+}
+```
+
+***Run Application**
+1. Start the mock API server:
+    ```
+    npm run json-server
+    ```
+    This will run the backend at [http://localhost:3000](http://localhost:3000).
+2. Start the Angular UI:
+    ```
+    npm run start
+    ```
+    This will launch the app at [http://localhost:4200](http://localhost:4200).
+
+
+***Let's go step by step and build a BookManagement that works beautifully with your NgRx Store + Signal Store setup.**
+    -   NgRx Store handles global book catalog (shared across app)
+    -   NgRx Signal Store handles local UI state (filters, sort order, selected book)
 
 [tailwindcss](https://tailwindcss.com/docs/installation/framework-guides/angular)
 
@@ -8,12 +40,12 @@
     -   NgRx Store → manages global book catalog (shared data across app, persisted, complex workflows).
     -   NgRx Signal Store → manages local UI state (filters, sort order, selected book, modal open/close).
 
-Global State (NgRx Store)
+***Global State (NgRx Store)**
     -   Books list (fetched from API / persisted in DB)
     -   Add, remove, update book
     -   Async side effects (API calls, caching, etc.)
 
-Local UI State (NgRx Signal Store)
+***Local UI State (NgRx Signal Store)**
     -   Current filter (by author, title)
     -   Sort order (by title/date)
     -   Selected book for details
@@ -22,7 +54,7 @@ Local UI State (NgRx Signal Store)
 ## Facade Service
 Creating a Facade Service for your book feature is an excellent architectural decision — it hides NgRx complexity (selectors, dispatches, signals) behind a clean, component-friendly API.
 
-🎯 Why Use a Facade?
+***🎯 Why Use a Facade?**
 
 A facade acts as a bridge between your components and NgRx Store.
 
@@ -38,6 +70,14 @@ A facade acts as a bridge between your components and NgRx Store.
 | `add()`, `remove()`, `update()` | Simple dispatch wrappers                             |
 | `updateById()`                  | Uses selector `selectBookById` to edit specific book |
 | `setFilter()` & `setSort()`     | Delegate UI state changes to `BookUIStore`           |
+
+***✅ Benefits of the Facade**
+| Feature                                               | Benefit                                                                                        |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Components don’t know about NgRx actions or selectors | Cleaner, maintainable code                                                                     |
+| Unified interface for UI + Store state                | No confusion between signals and observables                                                   |
+| Easy to test                                          | Mock `BookFacade` in specs                                                                     |
+| Future proof                                          | You can later migrate entirely to SignalStore or NgRx ComponentStore with zero template change |
 
 
 ## ✅ Workflow Now

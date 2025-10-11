@@ -1,13 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { take} from 'rxjs';
-import { Book } from '../models/book';
-import { loadBooks, removeBook, updateBook } from '../books/book.actions';
 import { CommonModule } from '@angular/common';
 import { BookUIStore } from '../books/book-ui.store';
 import { BookFilterPipe } from '../shared/pipes/book-filter.pipe';
 import { FormsModule } from '@angular/forms';
-import { selectBooks, selectBookById } from '../books/book.selector';
+import { BookFacade } from '../books/book.facade';
 
 
 @Component({
@@ -18,41 +14,33 @@ import { selectBooks, selectBookById } from '../books/book.selector';
   imports: [CommonModule, FormsModule, BookFilterPipe]
 })
 export class BookListComponent implements OnInit {
-  private store = inject(Store);
+  private facade = inject(BookFacade);
   uiStore = inject(BookUIStore);
-  books$ = this.store.select(selectBooks);
+  books$ = this.facade.books$;
+  filter = this.facade.filter;
+  sortBy = this.facade.sortBy;
   
   ngOnInit() {
-    this.store.dispatch(loadBooks());
-    this.books$.subscribe(books => {
-      console.log('Books loaded:', books);
-    });
+    this.facade.load();
   }
 
-  removeBook(bookId: number){
-    this.store.dispatch(removeBook({bookId}));
+  removeBook(bookId: string){
+    this.facade.remove(bookId);
   }
 
-  updateBook(bookId: number) {
-    this.store.select(selectBookById(bookId)).pipe(take(1)).subscribe(book => {
-      if (!book) return;
-
-      // For demo, simple prompt-based edit
-      const title = prompt('Edit Title', book.title);
-      const author = prompt('Edit Author', book.author);
-      const checkInDate = prompt('Edit Check-In Date (YYYY-MM-DD)', book.checkInDate);
-
-      if (title !== null && author !== null && checkInDate !== null) {
-        const updatedBook: Book = { ...book, title, author, checkInDate };
-        this.store.dispatch(updateBook({ book: updatedBook }));
-      }
-    });
+  updateBook(bookId: string) {
+    this.facade.isEditing.set(true);
+    this.facade.bookId.set(bookId);
   }
 
-  onSortChange(value: string) {
-    if (value === 'title' || value === 'date') {
-      this.uiStore.setSort(value as 'title' | 'date');
-    }
+  onSortChange(event: Event) {
+    const value = (event.target as HTMLSelectElement).value as 'title' | 'date';
+    this.facade.setSort(value);
+  }
+
+  onFilterChange(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    this.facade.setFilter(value);
   }
 
 }

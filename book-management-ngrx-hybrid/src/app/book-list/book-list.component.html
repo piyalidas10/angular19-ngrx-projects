@@ -5,10 +5,10 @@ If it’s null, the outer @else will show Loading....
 @if (books$ | async | bookFilter: uiStore.filter() : uiStore.sortBy(); as books) {
 @if (books.length > 0) {
 <div class="flex gap-2 justify-end mb-4 mt-10">
-  <input type="text" #sortInput placeholder="Filter by title..." [value]="uiStore.filter()"
-    (input)="uiStore.setFilter(sortInput.value)"
+  <input type="text" placeholder="Filter by title..." [value]="uiStore.filter()"
+    (input)="onFilterChange($event)"
     class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-  <select #sortSelect [value]="uiStore.sortBy()" (change)="onSortChange(sortSelect.value)">
+  <select [value]="uiStore.sortBy()" (change)="onSortChange($event)">
     <option value="title">Sort by Title</option>
     <option value="date">Sort by Date</option>
   </select>

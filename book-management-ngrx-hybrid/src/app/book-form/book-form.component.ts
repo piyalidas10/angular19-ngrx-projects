@@ -1,8 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { AppState } from '../app.state';
-import { addBook } from '../books/book.actions';
+import { BookFacade } from '../books/book.facade';
 
 @Component({
   selector: 'app-book-form',
@@ -12,33 +10,50 @@ import { addBook } from '../books/book.actions';
   imports: [ReactiveFormsModule]
 })
 export class BookFormComponent {
-  addbookForm: FormGroup = new FormGroup({});
+  facade = inject(BookFacade);
+  bookForm: FormGroup = new FormGroup({});
   successMessage = signal<string | null>(null);
 
-  constructor(private store: Store<AppState>, private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
-    this.addbookForm = this.formBuilder.group({
+    this.bookForm = this.formBuilder.group({
       bookTitle: ['', Validators.required],
       bookAuthor: ['', Validators.required],
       checkInDate: ['', Validators.required]
     })
   }
 
-  addBook() {
-    if (this.addbookForm.valid) {
-      this.store.dispatch(addBook({
-        book: {
-          id: Date.now(),
-          title: this.addbookForm.value['bookTitle'],
-          author: this.addbookForm.value['bookAuthor'],
-          checkInDate: this.addbookForm.value['checkInDate']
-        }
-      }));
+  onSubmitBook() {
+    if (this.bookForm.valid && !this.facade.isEditing()) {
+      this.facade.add({
+        title: this.bookForm.value['bookTitle'],
+        author: this.bookForm.value['bookAuthor'],
+        checkInDate: this.bookForm.value['checkInDate']
+      });
+      // Show success message
+      this.successMessage.set(`'${this.bookForm.value['bookTitle']}' checked in successfully!`);
+      setTimeout(() => this.successMessage.set(null), 3000);
     }
-    // Show success message
-    this.successMessage.set(`'${this.addbookForm.value['bookTitle']}' checked in successfully!`);
-    setTimeout(() => this.successMessage.set(null), 3000);
+    if (this.bookForm.valid && this.facade.isEditing()) {
+      // Update the book
+      this.facade.updateById({
+        id: this.facade.bookId()?.toString()!,
+        title: this.bookForm.value['bookTitle'],
+        author: this.bookForm.value['bookAuthor'],
+        checkInDate: this.bookForm.value['checkInDate']
+      });
+      // Show success message
+      this.successMessage.set(`'${this.bookForm.value['bookTitle']}' checked in successfully!`);
+      setTimeout(() => this.successMessage.set(null), 3000);
+    }
+    this.facade.isEditing.set(false);
+    this.facade.closeDialog();
+  }
+
+  onCancel() {
+    this.facade.closeDialog();
+    this.facade.isEditing.set(false);
   }
 }

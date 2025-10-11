@@ -5,14 +5,14 @@ interface BookUIState {
   filter: string;
   sortBy: 'title' | 'date';
   selectedBookId: number | null;
-  showAddDialog: boolean;
+  showDialog: boolean;
 }
 
 const initialUIState: BookUIState = {
   filter: '',
   sortBy: 'title',
   selectedBookId: null,
-  showAddDialog: false
+  showDialog: false
 };
 
 @Injectable({ providedIn: 'root' })
@@ -29,8 +29,11 @@ export class BookUIStore extends signalStore(
     selectBook(id: number | null) {
       patchState(store, { selectedBookId: id });
     },
-    toggleAddDialog() {
-      patchState(store, { showAddDialog: !store.showAddDialog() });
+    showDialogBox() {
+      patchState(store, { showDialog: true });
+    },
+    hideDialogBox() {
+      patchState(store, { showDialog: false });
     }
   }))
 ) {}

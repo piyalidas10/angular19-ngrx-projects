@@ -1,4 +1,4 @@
-import { Injectable, computed, inject } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { addBook, removeBook, updateBook, loadBooks } from './book.actions';
 import { BookUIStore } from './book-ui.store';
@@ -9,7 +9,10 @@ import { Book } from '../models/book';
 @Injectable({ providedIn: 'root' })
 export class BookFacade {
   private store = inject(Store);
-  private ui = inject(BookUIStore);
+  ui = inject(BookUIStore);
+
+  isEditing = signal<boolean>(false);
+  bookId = signal<string | null>(null);
 
   // Observable store data
   books$ = this.store.select(selectBooks);
@@ -29,17 +32,16 @@ export class BookFacade {
     return books;
   });
 
-  // --- CRUD Actions ---
   load() {
     this.store.dispatch(loadBooks());
   }
 
   add(book: Omit<Book, 'id'>) {
-    const newBook: Book = { ...book, id: Date.now() };
+    const newBook: Book = { ...book, id: Date.now().toString() };
     this.store.dispatch(addBook({ book: newBook }));
   }
 
-  remove(id: number) {
+  remove(id: string) {
     this.store.dispatch(removeBook({ bookId: id }));
   }
 
@@ -47,14 +49,11 @@ export class BookFacade {
     this.store.dispatch(updateBook({ book }));
   }
 
-  updateById(id: number) {
+  updateById(book: Book) {
+    const { id, title, author, checkInDate } = book;
     this.store.select(selectBookById(id)).pipe(take(1)).subscribe(book => {
       if (!book) return;
-
-      const title = prompt('Edit Title', book.title);
-      const author = prompt('Edit Author', book.author);
-      const checkInDate = prompt('Edit Check-In Date (YYYY-MM-DD)', book.checkInDate);
-
+      
       if (title && author && checkInDate) {
         this.update({
           ...book,
@@ -75,7 +74,13 @@ export class BookFacade {
     this.ui.setSort(value);
   }
 
-  toggleAddDialog() {
-    this.ui.toggleAddDialog();
+  openDialog() {
+    this.ui.showDialogBox();
+    return this.ui.showDialog;
+  }
+
+  closeDialog() {
+    this.ui.hideDialogBox();
+    return this.ui.showDialog;
   }
 }

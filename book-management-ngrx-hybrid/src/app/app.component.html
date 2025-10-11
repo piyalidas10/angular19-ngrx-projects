@@ -1,11 +1,17 @@
 <div class="container-fluid bg-white p-4 m-4">
-    
-    <div class="flex gap-2 justify-between mb-4">
-        <h1 class="text-3xl font-bold text-blue-600">Books</h1>
-        <button (click)="uiStore.toggleAddDialog()" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded">Add Book</button>
-    </div>
-    @if(uiStore.showAddDialog()) {
-        <app-book-form></app-book-form>
+  <div class="flex gap-2 justify-between mb-4">
+    <h1 class="text-3xl font-bold text-blue-600">Books</h1>
+
+    @if (!facade.ui.showDialog() && !facade.isEditing()) {
+      <button (click)="facade.openDialog()" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded">Add Book</button>
+    } @else {
+      <button (click)="facade.closeDialog()" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded">Close</button>
     }
-    <app-book-list></app-book-list>
+  </div>
+
+  @if (facade.ui.showDialog()) {
+    <app-book-form></app-book-form>
+  }
+
+  <app-book-list></app-book-list>
 </div>
