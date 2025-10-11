@@ -35,7 +35,9 @@ npm install @ngrx/effects json-server
 
 [tailwindcss](https://tailwindcss.com/docs/installation/framework-guides/angular)
 
-![ngrx](img/1.png)
+![ngrx display](img/display.png)
+![ngrx display](img/add.png)
+![ngrx display](img/delete.png)
 
     -   NgRx Store → manages global book catalog (shared data across app, persisted, complex workflows).
     -   NgRx Signal Store → manages local UI state (filters, sort order, selected book, modal open/close).
